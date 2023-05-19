@@ -5,9 +5,24 @@ def index
 end
 
 def show
-  @places = Place.findy_by[{"id" => params["id"]}]
+  @places = Place.find_by[{"id" => params["id"]}]
 end
 
+
+def new
+  @places = Place.new
+end
+
+def create
+  @places = Place.new
+  # start with a new Company
+  # assign user-entered form data to Company's columns
+  @places["name"] = params["name"]
+  # save Company row
+  @places.save
+  # redirect user
+  redirect_to "/places" 
+end
 
 
 
